@@ -24,5 +24,9 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.4",
+    "@tanstack/react-query": "^5.82.0"
   }
 }
