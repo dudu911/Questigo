@@ -3,6 +3,15 @@ node_modules/
 */node_modules/
 **/node_modules/
 
+# Package manager files
+.pnpm-store/
+.pnpm-debug.log*
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.yarnrc.yml
+
 # Build outputs
 dist/
 build/
@@ -11,7 +20,7 @@ build/
 out/
 *.tsbuildinfo
 
-# Mobile specific
+# Mobile specific (React Native/Expo)
 .expo/
 ios/build/
 android/build/
@@ -28,6 +37,8 @@ ios/DerivedData/
 *.p12
 *.key
 *.pem
+web-build/
+.metro-health-check*
 
 # Environment files
 .env
@@ -59,9 +70,6 @@ coverage/
 # Dependency directories
 jspm_packages/
 
-# TypeScript cache
-*.tsbuildinfo
-
 # Optional npm cache directory
 .npm
 
@@ -83,19 +91,17 @@ jspm_packages/
 # Yarn Integrity file
 .yarn-integrity
 
-# parcel-bundler cache (https://parceljs.org/)
+# Bundler cache
 .cache
 .parcel-cache
-
-# Next.js build output
-.next
 
 # Nuxt.js build / generate output
 .nuxt
 
-# Gatsby files
+# Gatsby files - but allow Next.js public folder
 .cache/
-public
+public/static/
+public/build/
 
 # Storybook build outputs
 .out
@@ -124,11 +130,3 @@ temp/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Expo
-.expo/
-dist/
-web-build/
-
-# Metro
-.metro-health-check*
