@@ -38,6 +38,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
         
+      - name: Build shared packages first
+        run: pnpm --filter '@questigo/shared' --filter '@questigo/ui' build
+        
       - name: Type check
         run: pnpm type-check
         
@@ -46,9 +49,6 @@ jobs:
         
       - name: Test
         run: pnpm test --if-present
-        
-      - name: Build shared packages
-        run: pnpm --filter '@questigo/shared' --filter '@questigo/ui' build
         
       - name: Build web app
         run: pnpm --filter web build
