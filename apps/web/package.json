@@ -8,7 +8,6 @@
     "build": "pnpm build:deps && next build",
     "build:deps": "pnpm --filter '@questigo/shared' --filter '@questigo/ui' build",
     "start": "next start",
-    "lint": "next lint",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
