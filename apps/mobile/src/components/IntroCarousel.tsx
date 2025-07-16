@@ -4,7 +4,6 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  StyleSheet,
   Dimensions,
 } from "react-native";
 
@@ -36,92 +35,43 @@ export function IntroCarousel({ slides }: IntroCarouselProps) {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.slideContainer}>
-        <Image source={slides[currentIndex].img} style={styles.image} />
-        <Text style={styles.text}>{slides[currentIndex].txt}</Text>
+    <View className="flex-1 items-center justify-center">
+      <View className="items-center justify-center flex-1" style={{ width: width * 0.8 }}>
+        <Image 
+          source={slides[currentIndex].img} 
+          className="mb-5" 
+          style={{ width: 250, height: 250, resizeMode: "contain" }}
+        />
+        <Text className="text-lg text-center text-gray-800 mb-5">
+          {slides[currentIndex].txt}
+        </Text>
       </View>
 
-      <View style={styles.pagination}>
+      <View className="flex-row items-center justify-center my-5">
         {slides.map((_, index) => (
           <View
             key={index}
-            style={[
-              styles.dot,
-              index === currentIndex ? styles.activeDot : styles.inactiveDot,
-            ]}
+            className={`w-2.5 h-2.5 rounded-full mx-1 ${
+              index === currentIndex ? "bg-blue-500" : "bg-gray-300"
+            }`}
           />
         ))}
       </View>
 
-      <View style={styles.navigation}>
-        <TouchableOpacity onPress={prevSlide} style={styles.navButton}>
-          <Text style={styles.navText}>Previous</Text>
+      <View className="flex-row justify-between mb-5" style={{ width: width * 0.8 }}>
+        <TouchableOpacity 
+          onPress={prevSlide} 
+          style={{ paddingHorizontal: 20, paddingVertical: 10, backgroundColor: "#3B82F6", borderRadius: 5 }}
+        >
+          <Text className="text-white text-base">Previous</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={nextSlide} style={styles.navButton}>
-          <Text style={styles.navText}>Next</Text>
+        <TouchableOpacity 
+          onPress={nextSlide} 
+          style={{ paddingHorizontal: 20, paddingVertical: 10, backgroundColor: "#3B82F6", borderRadius: 5 }}
+        >
+          <Text className="text-white text-base">Next</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  slideContainer: {
-    width: width * 0.8,
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-  },
-  image: {
-    width: 250,
-    height: 250,
-    resizeMode: "contain",
-    marginBottom: 20,
-  },
-  text: {
-    fontSize: 18,
-    textAlign: "center",
-    color: "#333",
-    marginBottom: 20,
-  },
-  pagination: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginVertical: 20,
-  },
-  dot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    marginHorizontal: 5,
-  },
-  activeDot: {
-    backgroundColor: "#007AFF",
-  },
-  inactiveDot: {
-    backgroundColor: "#ccc",
-  },
-  navigation: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: width * 0.8,
-    marginBottom: 20,
-  },
-  navButton: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    backgroundColor: "#007AFF",
-    borderRadius: 5,
-  },
-  navText: {
-    color: "white",
-    fontSize: 16,
-  },
-});

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView, SafeAreaView } from "react-native";
+import { Text, View, ScrollView, SafeAreaView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { formatDate } from "@questigo/shared";
 import { QuestCard } from "../components/QuestCard";
@@ -10,16 +10,16 @@ export const HomeScreen: React.FC = () => {
   const { questProgress } = useQuestProgress(initialQuestProgress);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollContainer}>
-        <View style={styles.header}>
-          <Text style={styles.title}>Questigo Mobile</Text>
-          <Text style={styles.subtitle}>Cross-platform monorepo demo</Text>
+    <SafeAreaView className="flex-1 bg-gray-100">
+      <ScrollView className="flex-1 p-4">
+        <View className="items-center mb-6 pt-5">
+          <Text className="text-3xl font-bold text-gray-900 mb-2">Questigo Mobile</Text>
+          <Text className="text-lg text-gray-600 text-center">Cross-platform monorepo demo</Text>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Sample Quests</Text>
-          <Text style={styles.sectionDescription}>
+        <View className="mb-6">
+          <Text className="text-2xl font-semibold text-gray-900 mb-2">Sample Quests</Text>
+          <Text className="text-base text-gray-600 mb-4">
             This demonstrates shared types and utilities working across
             platforms.
           </Text>
@@ -33,8 +33,8 @@ export const HomeScreen: React.FC = () => {
           ))}
         </View>
 
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>
+        <View className="items-center mt-6 pb-5">
+          <Text className="text-xs text-gray-500 text-center">
             Built with React Native & Expo • {formatDate(new Date())}
           </Text>
         </View>
@@ -43,54 +43,3 @@ export const HomeScreen: React.FC = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f5f5f5",
-  },
-  scrollContainer: {
-    flex: 1,
-    padding: 16,
-  },
-  header: {
-    alignItems: "center",
-    marginBottom: 24,
-    paddingTop: 20,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#1a1a1a",
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 18,
-    color: "#666",
-    textAlign: "center",
-  },
-  section: {
-    marginBottom: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: "600",
-    color: "#1a1a1a",
-    marginBottom: 8,
-  },
-  sectionDescription: {
-    fontSize: 16,
-    color: "#666",
-    marginBottom: 16,
-  },
-  footer: {
-    alignItems: "center",
-    marginTop: 24,
-    paddingBottom: 20,
-  },
-  footerText: {
-    fontSize: 12,
-    color: "#999",
-    textAlign: "center",
-  },
-});
