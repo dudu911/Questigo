@@ -17,51 +17,43 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   style,
 }) => {
-  const getButtonStyle = () => {
-    const baseStyle: React.CSSProperties = {
-      padding:
-        size === "small"
-          ? "8px 16px"
-          : size === "large"
-            ? "16px 32px"
-            : "12px 24px",
-      borderRadius: "8px",
-      border: "none",
-      cursor: disabled ? "not-allowed" : "pointer",
-      fontSize: size === "small" ? "14px" : size === "large" ? "18px" : "16px",
-      fontWeight: "600",
-      transition: "all 0.2s ease",
-      opacity: disabled ? 0.6 : 1,
-      ...style,
-    };
-
-    switch (variant) {
-      case "primary":
-        return {
-          ...baseStyle,
-          backgroundColor: "#007AFF",
-          color: "white",
-        };
-      case "secondary":
-        return {
-          ...baseStyle,
-          backgroundColor: "#F2F2F7",
-          color: "#000",
-        };
-      case "outline":
-        return {
-          ...baseStyle,
-          backgroundColor: "transparent",
-          color: "#007AFF",
-          border: "2px solid #007AFF",
-        };
+  const getSizeClasses = () => {
+    switch (size) {
+      case "small":
+        return "px-4 py-2 text-sm";
+      case "large":
+        return "px-8 py-4 text-lg";
       default:
-        return baseStyle;
+        return "px-6 py-3 text-base";
     }
   };
 
+  const getVariantClasses = () => {
+    switch (variant) {
+      case "primary":
+        return "bg-blue-500 text-white hover:bg-blue-600";
+      case "secondary":
+        return "bg-gray-100 text-black hover:bg-gray-200";
+      case "outline":
+        return "bg-transparent text-blue-500 border-2 border-blue-500 hover:bg-blue-50";
+      default:
+        return "bg-blue-500 text-white hover:bg-blue-600";
+    }
+  };
+
+  const baseClasses =
+    "rounded-lg border-none font-semibold transition-all duration-200 ease-in-out";
+  const disabledClasses = disabled
+    ? "opacity-60 cursor-not-allowed"
+    : "cursor-pointer";
+
   return (
-    <button style={getButtonStyle()} onClick={onPress} disabled={disabled}>
+    <button
+      className={`${baseClasses} ${getSizeClasses()} ${getVariantClasses()} ${disabledClasses}`}
+      onClick={onPress}
+      disabled={disabled}
+      style={style}
+    >
       {children}
     </button>
   );

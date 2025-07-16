@@ -1,2 +1,2 @@
 // React Native specific components
-export { IntroCarousel } from "./components/IntroCarousel";
+// Currently empty - mobile-specific components should be in the mobile app directly

@@ -1,4 +1,4 @@
-import { IntroCarousel } from "@questigo/ui/dist/native";
+import { IntroCarousel } from "../../src/components/IntroCarousel";
 import { View, Pressable, Text } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
@@ -30,8 +30,13 @@ export default function Intro() {
   return (
     <View className="flex-1 bg-white">
       <IntroCarousel slides={slides} />
-      <Pressable onPress={onDone} className="items-center py-4">
-        <Text className="text-orange font-bold">Get Started</Text>
+      <Pressable
+        onPress={onDone}
+        className="bg-blue-600 mx-6 mb-12 py-4 rounded-full"
+      >
+        <Text className="text-white text-center text-lg font-semibold">
+          Get Started
+        </Text>
       </Pressable>
     </View>
   );

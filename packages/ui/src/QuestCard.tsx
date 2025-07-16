@@ -21,108 +21,54 @@ export const QuestCard: React.FC<QuestCardProps> = ({
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case "easy":
-        return "#34C759";
+        return "bg-green-500";
       case "medium":
-        return "#FF9500";
+        return "bg-orange-500";
       case "hard":
-        return "#FF3B30";
+        return "bg-red-500";
       default:
-        return "#007AFF";
+        return "bg-blue-500";
     }
   };
 
-  const cardStyle: React.CSSProperties = {
-    backgroundColor: "white",
-    borderRadius: "12px",
-    padding: "16px",
-    margin: "8px 0",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-    border: "1px solid #E5E5EA",
-    ...style,
-  };
-
-  const headerStyle: React.CSSProperties = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-    marginBottom: "8px",
-  };
-
-  const titleStyle: React.CSSProperties = {
-    fontSize: "18px",
-    fontWeight: "600",
-    color: "#000",
-    margin: "0 0 4px 0",
-  };
-
-  const categoryStyle: React.CSSProperties = {
-    fontSize: "12px",
-    color: "#8E8E93",
-    textTransform: "uppercase",
-    letterSpacing: "0.5px",
-  };
-
-  const difficultyBadgeStyle: React.CSSProperties = {
-    backgroundColor: getDifficultyColor(quest.difficulty),
-    color: "white",
-    padding: "4px 8px",
-    borderRadius: "4px",
-    fontSize: "12px",
-    fontWeight: "600",
-    textTransform: "uppercase",
-  };
-
-  const descriptionStyle: React.CSSProperties = {
-    fontSize: "14px",
-    color: "#666",
-    margin: "8px 0",
-    lineHeight: "1.4",
-  };
-
-  const metaStyle: React.CSSProperties = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    margin: "12px 0",
-    fontSize: "12px",
-    color: "#8E8E93",
-  };
-
-  const actionsStyle: React.CSSProperties = {
-    display: "flex",
-    gap: "8px",
-    marginTop: "12px",
-  };
-
   return (
-    <div style={cardStyle}>
-      <div style={headerStyle}>
+    <div
+      className="bg-white rounded-xl p-4 my-2 shadow-sm border border-gray-200"
+      style={style}
+    >
+      <div className="flex justify-between items-start mb-2">
         <div>
-          <h3 style={titleStyle}>{quest.title}</h3>
-          <p style={categoryStyle}>{quest.category}</p>
+          <h3 className="text-lg font-semibold text-black mb-1">
+            {quest.title}
+          </h3>
+          <p className="text-xs text-gray-500 uppercase tracking-wide">
+            {quest.category}
+          </p>
         </div>
-        <span style={difficultyBadgeStyle}>{quest.difficulty}</span>
+        <span
+          className={`${getDifficultyColor(quest.difficulty)} text-white px-2 py-1 rounded text-xs font-semibold uppercase`}
+        >
+          {quest.difficulty}
+        </span>
       </div>
 
-      <p style={descriptionStyle}>{quest.description}</p>
+      <p className="text-sm text-gray-600 my-2 leading-relaxed">
+        {quest.description}
+      </p>
 
-      <div style={metaStyle}>
+      <div className="flex justify-between items-center my-3 text-xs text-gray-500">
         <span>{formatTime(quest.estimatedTime)}</span>
         <span>{quest.points} points</span>
       </div>
 
       {progress > 0 && (
-        <div style={{ margin: "8px 0" }}>
+        <div className="my-2">
           <ProgressBar progress={progress} />
-          <p
-            style={{ fontSize: "12px", color: "#8E8E93", margin: "4px 0 0 0" }}
-          >
-            {progress}% complete
-          </p>
+          <p className="text-xs text-gray-500 mt-1">{progress}% complete</p>
         </div>
       )}
 
-      <div style={actionsStyle}>
+      <div className="flex gap-2 mt-3">
         {progress === 0 ? (
           <Button variant="primary" size="small" onPress={onStartQuest}>
             Start Quest

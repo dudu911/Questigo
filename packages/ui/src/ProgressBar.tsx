@@ -17,26 +17,19 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 }) => {
   const clampedProgress = Math.max(0, Math.min(100, progress));
 
-  const containerStyle: React.CSSProperties = {
-    width: "100%",
-    height: `${height}px`,
-    backgroundColor,
-    borderRadius: `${height / 2}px`,
-    overflow: "hidden",
-    ...style,
-  };
-
-  const fillStyle: React.CSSProperties = {
-    height: "100%",
-    width: `${clampedProgress}%`,
-    backgroundColor: color,
-    transition: "width 0.3s ease",
-    borderRadius: `${height / 2}px`,
-  };
-
   return (
-    <div style={containerStyle}>
-      <div style={fillStyle} />
+    <div
+      className="w-full bg-gray-200 rounded-full overflow-hidden"
+      style={{ height: `${height}px`, backgroundColor, ...style }}
+    >
+      <div
+        className="h-full bg-blue-500 transition-all duration-300 ease-out rounded-full"
+        style={{
+          width: `${clampedProgress}%`,
+          backgroundColor: color,
+          height: `${height}px`,
+        }}
+      />
     </div>
   );
 };
