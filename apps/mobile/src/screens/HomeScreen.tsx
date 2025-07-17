@@ -10,18 +10,19 @@ export const HomeScreen: React.FC = () => {
   const { questProgress } = useQuestProgress(initialQuestProgress);
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-100">
+    <SafeAreaView className="flex-1 bg-gray-50">
       <ScrollView className="flex-1 p-4">
-        <View className="items-center mb-6 pt-5">
-          <Text className="text-3xl font-bold text-gray-900 mb-2">Questigo Mobile</Text>
-          <Text className="text-lg text-gray-600 text-center">Cross-platform monorepo demo</Text>
+        <View className="items-center mb-8 pt-6">
+          <Text className="text-4xl font-display font-bold text-gray-900 mb-3">Questigo</Text>
+          <Text className="text-lg text-gray-600 text-center font-medium">
+            Your Adventure Awaits
+          </Text>
         </View>
 
-        <View className="mb-6">
-          <Text className="text-2xl font-semibold text-gray-900 mb-2">Sample Quests</Text>
-          <Text className="text-base text-gray-600 mb-4">
-            This demonstrates shared types and utilities working across
-            platforms.
+        <View className="mb-8">
+          <Text className="text-2xl font-display font-bold text-gray-900 mb-3">Active Quests</Text>
+          <Text className="text-base text-gray-600 mb-6 leading-6">
+            Complete quests to earn points and unlock new adventures across the platform.
           </Text>
 
           {sampleQuests.map((quest) => (
@@ -33,7 +34,7 @@ export const HomeScreen: React.FC = () => {
           ))}
         </View>
 
-        <View className="items-center mt-6 pb-5">
+        <View className="items-center mt-8 pb-8">
           <Text className="text-xs text-gray-500 text-center">
             Built with React Native & Expo • {formatDate(new Date())}
           </Text>
