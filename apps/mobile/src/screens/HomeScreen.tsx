@@ -13,16 +13,21 @@ export const HomeScreen: React.FC = () => {
     <SafeAreaView className="flex-1 bg-gray-50">
       <ScrollView className="flex-1 p-4">
         <View className="items-center mb-8 pt-6">
-          <Text className="text-4xl font-display font-bold text-gray-900 mb-3">Questigo</Text>
+          <Text className="text-4xl font-bold text-gray-900 mb-3">
+            Questigo
+          </Text>
           <Text className="text-lg text-gray-600 text-center font-medium">
             Your Adventure Awaits
           </Text>
         </View>
 
         <View className="mb-8">
-          <Text className="text-2xl font-display font-bold text-gray-900 mb-3">Active Quests</Text>
-          <Text className="text-base text-gray-600 mb-6 leading-6">
-            Complete quests to earn points and unlock new adventures across the platform.
+          <Text className="text-2xl font-bold text-gray-900 mb-3">
+            Active Quests
+          </Text>
+          <Text className="text-base text-gray-600 mb-6">
+            Complete quests to earn points and unlock new adventures across the
+            platform.
           </Text>
 
           {sampleQuests.map((quest) => (
