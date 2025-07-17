@@ -10,13 +10,13 @@ export const HomeScreen: React.FC = () => {
   const { questProgress } = useQuestProgress(initialQuestProgress);
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50">
+    <SafeAreaView className="flex-1 bg-red-200">
       <ScrollView className="flex-1 p-4">
         <View className="items-center mb-8 pt-6">
-          <Text className="text-4xl font-bold text-gray-900 mb-3">
+          <Text className="text-4xl font-bold text-blue-600 mb-3">
             Questigo
           </Text>
-          <Text className="text-lg text-gray-600 text-center font-medium">
+          <Text className="text-lg text-green-600 text-center font-medium">
             Your Adventure Awaits
           </Text>
         </View>
